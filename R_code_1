@@ -1,0 +1,34 @@
+# Start your comment with the hashtag.
+
+# Array:
+primates <- c(3, 5, 9, 15, 40)
+primates
+
+# New set:
+crabs <- c(100, 70, 30, 10, 5)
+
+# First plot in R
+plot (primates, crabs)
+
+plot (primates, crabs, col="red")
+
+# pch= point carachter
+plot (primates, crabs, col="red", pch=19)
+
+# cex= caracther exageration
+plot (primates, crabs, col="red", pch=19, cex=2)
+
+plot (primates, crabs, col="red", pch=19, cex=6)
+
+# Main = title
+plot (primates, crabs, col="red", pch=19, cex=6, main="My first ecological graph in R")
+
+# create a dataframe (=table)
+ecoset <- data.frame(primates, crabs)
+ecoset
+
+# mean of number per ecological site
+(3+5+9+15+40)/5
+
+# summary of the dataframe
+summary(ecoset)
