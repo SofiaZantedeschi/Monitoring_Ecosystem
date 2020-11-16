@@ -40,3 +40,43 @@ bubble(meuse, "lead")
 # Changing the colour
 bubble(meuse, "lead", col='blue')
 
+----------------------------------------------------------------------------------------------
+
+##### Installing ggplot2
+install.packages("ggplot2")
+
+library(ggplot2)
+
+# Let's build a new dataframe
+# Biofuel: the amount of energy (J) that ca be produced
+biofuels <- c(120, 200, 350, 570, 750) # array of values: c
+
+# The higher the biofuels the higher the oxydative power of the reaction (amount of bacteria in a certain sample)
+oxydative <- c(1200, 1300, 21000, 34000, 50000)
+
+# Dataframe
+d <- data.frame(biofuels, oxydative)
+d
+
+# Points
+ggplot(d, aes(x=biofuels, y=oxydative)) + geom_point(col='red', size=2)
+
+# Lines
+ggplot(d, aes(x=biofuels, y=oxydative)) + geom_line()
+
+# Points + Lines
+ggplot(d, aes(x=biofuels, y=oxydative)) +  geom_point(col='red', size=2) + geom_line()
+
+# Polygons
+ggplot(d, aes(x=biofuels, y=oxydative)) + geom_polygon()
+
+
+#### Import data from an external source
+
+setwd("~/Lab/")
+covid <- read.table("covid_agg.csv",header=TRUE)
+covid
+
+
+
+
