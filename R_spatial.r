@@ -74,8 +74,58 @@ ggplot(d, aes(x=biofuels, y=oxydative)) + geom_polygon()
 #### Import data from an external source
 
 setwd("~/Lab/")
-covid <- read.table("covid_agg.csv",header=TRUE)
+covid <- read.table("covid_agg.csv",header=TRUE)  ## TRUE: to start data from the secondr raw. If it is false it starts from the beginning
 covid
+
+#
+# setwd for Windows
+setwd("C:/lab/")
+
+# in case you could not create a lab folder:
+setwed("C:/")
+ 
+# setwd Mac
+setwd("/Users/yourname/lab/")
+
+# Linux
+setwd("~/lab/")
+
+------------------------------------------------------------------------------------------------------------------------
+
+???? Two questions: 
+1. Are '' the same as ""
+2. why true and false? What if I need R to start from the 3?
+
+
+#### Import data from an external source
+
+setwd("~/Lab/")
+covid <- read.table("covid_agg.csv",header=TRUE)  ## TRUE: to start data from the secondr raw. If it is false it starts from the beginning
+covid
+
+# See the firt values
+head(covid)
+
+summary(covid)
+
+# ggplot2
+library(ggplot2)
+ggplot(covid, aes(x=lon, y=lat)) + geom_point()
+
+# changing the size of the points
+ggplot(covid, aes(x=lon, y=lat, size=cases)) + geom_point()
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
