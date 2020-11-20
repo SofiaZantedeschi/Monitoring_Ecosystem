@@ -13,5 +13,18 @@ covid
 # We have to attach the dataset
 attach(covid)
 
-# Then we can plot
-ppp(
+# Then we can plot with x,y,ranges
+covid_planar <- ppp(lon, lat, c(-180,180), c(-90,90))
+
+density_map <- density(covid_planar)
+
+plot(density_map)
+points(covid_planar)
+
+# Excerice: change the colour of the map
+plot(density_map, col = cl)
+cl <- colorRampPalette(c('blue','yellow','orange','red','magenta'))(100)
+
+
+cl <- colorRampPalette(c('yellow','orange','red'))(100) #
+plot(density_map, col = cl)
