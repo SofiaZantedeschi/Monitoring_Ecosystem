@@ -86,5 +86,19 @@ plot(coastlines, add = T)
 points(covid_planar)
 
 
+###àààààààààààààààààààà##################################################
 
+setwd("~/Lab")
+library(spatstat)
+library(rgdal)
 
+attach(covid)
+covid_planar <- ppp(lon, lat, c(-180,180), c(-90,90))
+
+covid <- read.table("covid_agg.csv", header=TRUE)
+head(covid)
+
+marks(covid_planar) <- cases
+cases_map <- Smooth(covid_planar)
+
+cl <- colorRampPalette(c('lightpink','green','tomato1','red','magenta'))(100) 
