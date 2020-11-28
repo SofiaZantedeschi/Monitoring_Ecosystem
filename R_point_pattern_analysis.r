@@ -86,19 +86,31 @@ plot(coastlines, add = T)
 points(covid_planar)
 
 
-###àààààààààààààààààààà##################################################
+######## Plotting points with different size related to covid data together with the interpolation
+
+# Setting the working directory
 
 setwd("~/Lab")
 library(spatstat)
 library(rgdal)
 
-attach(covid)
-covid_planar <- ppp(lon, lat, c(-180,180), c(-90,90))
-
-covid <- read.table("covid_agg.csv", header=TRUE)
+covid <- read.table("covid_agg.csv",header=TRUE)  ## TRUE: to start data from the secondr raw. If it is false it starts from the beginning
 head(covid)
 
-marks(covid_planar) <- cases
+attach (covid) # if you do not you have to declare every time the veraible like this: covid$lon
+covid_planar <- ppp(lon, lat, c(-180,180), c(-90,90))
+
+marks (covid_planar) <- cases
 cases_map <- Smooth(covid_planar)
 
-cl <- colorRampPalette(c('lightpink','green','tomato1','red','magenta'))(100) 
+cl <- colorRampPalette(c('brown2','brown4','aquamarine2','aquamarine4','blue') (100)
+                       
+plot(cases_map)
+
+                       
+#########
+install.packages("sf")
+library(sf)
+
+Spoints <- st_as_sf(covid, coords = c("lon", "lat"))
+plot(Spoints, cex=Spoints$cases, col = 'purple3', lwd = 3, add=T)
