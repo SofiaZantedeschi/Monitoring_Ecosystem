@@ -114,3 +114,22 @@ library(sf)
 
 Spoints <- st_as_sf(covid, coords = c("lon", "lat"))
 plot(Spoints, cex=Spoints$cases, col = 'purple3', lwd = 3, add=T)
+                       
+                       
+                       
+#############################################################################
+## Leo's data:
+setwd("~/Lab")                       
+leo <- read.table("dati_zabotti.csv", header=T, sep=",")
+head(leo)                                
+                       
+attach(leo)
+library(spatstat)
+                       
+                       
+leo_ppp <- ppp(x, y, c(2300000,2325000), c(5005000,5045000))
+plot(leo_ppp)
+                       
+density_map <- density(leo_ppp)
+plot(density_map)
+points(leo_ppp)                    
