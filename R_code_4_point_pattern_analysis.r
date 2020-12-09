@@ -132,4 +132,91 @@ plot(leo_ppp)
                        
 density_map <- density(leo_ppp)
 plot(density_map)
-points(leo_ppp)                    
+points(leo_ppp)    
+                       
+
+
+
+
+###---INTERPOLATION FROM STUDENT'S DATA
+
+#  IMPORTANT:REFERENCE SYSTEMS. Earth is a geoid (surface perpendicular to the gravity force - equipotential surfaces and the geoid surface is the sea level) so we use a different surface and not the topographic surface 
+#                               ED50 (called international ellipsoid) is the ellipsoid used for Europe but it's not good for North America that actually uses NAD27 (called Clarke ellipsoid) as the reference ellipsoid but there are
+#                               plenty of different ellipsoids. So every time we use coordinates like longitude and latitude we need to state the reference system. Nowadays they're promoting the World Geodetic System trying to use
+#                               the same system worldwide. Also the GPS (Global Position System) use the same coordinates. UTM is the Universal Transverse Mercator that project Earth'surface in a flat plane (every piece is called zone
+#                              or "fuso" in italian). This allow us to measure the distance from the Meridian. Greenwich meridian is given a number different to zero in order not to have negative numbers of the left side of the planet.
+#                              In UTM every zone is 6 degrees and there are 60 zones. Italy is divided into two zones: from 6 to 12 degrees and from 12 to 18 degrees. 
+#                              In the data we're using coordinates are calculated in meters (Gauss Boaga system) from the Greenwich Meridian (x) and from the Equator (y).
+
+#let's import the data. REMEMBER TO SET THE WD BEFORE THAT
+
+setwd("C:/Users/Leonardo/Desktop/Università/UNIBO/PRIMO ANNO/MONITORING ECOSYSTEMS CHANGES AND FUNCTIONING/lab")
+
+leo <- read.table("dati_zabotti.csv", head=T, sep=",")  
+head(leo)
+
+##    We want to make the PPP in order to build the density map
+
+attach(leo)
+
+library(spatstat)
+leo_ppp <- ppp(x, y, c(2300000,2325000), c(5005000,5045000))       # \summary(leo)\ will show the minimum and maximum x and y in order to build the range (usually bigger than the values)
+
+dens_leo <- density(leo_ppp)      #to build the density object and then plot it
+plot(dens_leo)
+points(leo_ppp)
+
+###---HOW TO SAVE WORKSPACE? Go to file menu so next time you open we don't have to import data again
+
+###-- HOW TO LOAD RDATA FILES: \load("point_pattern_analysis.RData")\ after putting the file in the WD and setting the WD
+
+##   We now want to interpolate missing data
+
+marks(leo_ppp) <- chlh        #we're interpolating the values of chlorophyll explaining to R what is the variable we want to use. Remember \libray(spatstat)\ and \attach(leo)\
+chlh_map <- Smooth(leo_ppp)
+plot(chlh_map)
+
+# Let'a change the color ramp palette
+cl <- colorRampPalette(c('yellow','orange','red','green'))(100) 
+plot(chlh_map, col=cl)
+points(leo_ppp)
+
+marks(leo_ppp) <- t
+t_map <- Smooth(leo_ppp)
+plot(t_map)
+points(leo_ppp)
+
+# Exercise: do the same for chlorophyll in the sediment (chls)
+
+marks(leo_ppp) <- chls
+chls_map <- Smooth(leo_ppp)
+plot(chls_map)
+points(leo_ppp)
+
+ ###---CREATING PANELS WITH MORE MAPS
+
+par(mfrow=c(1,3))       # Function that set some graphical parameters. In this case we build a MULTIFRAME with \mf\ and then we state how many maps in a row or column- \mfrow=c(1.3)\ mans we want 1 row and 3 columns
+plot(dens_leo)
+points(leo_ppp)
+plot(chlh_map)
+points(leo_ppp)
+plot(chls_map)
+points(leo_ppp)
+# we can of course change the colours by creating a ramppalette and stating \col=cl\
+
+#----------Exercise: build a panel with 3 rows and  column
+
+cl <- colorRampPalette(c('yellow','orange','red','green'))(100) 
+
+par(mfrow=c(3,1))
+
+plot(dens_leo, col=cl)
+points(leo_ppp)
+
+plot(chlh_map, col=cl)
+points(leo_ppp)
+
+plot(chls_map, col=cl)
+points(leo_ppp)
+#-------------------------------------------------
+
