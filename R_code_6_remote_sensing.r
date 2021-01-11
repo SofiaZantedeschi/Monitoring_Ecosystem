@@ -11,8 +11,6 @@ setwd("~/lab/")
 # windows
 # setwd("/Users/name/lab/")
 
-setwd("C:/Users/Leonardo/Desktop/Università/UNIBO/PRIMO ANNO/MONITORING ECOSYSTEMS CHANGES AND FUNCTIONING/lab")
-
 p224r63_2011 <- brick("p224r63_2011_masked.grd")     #\brick("object to upload in work. dir.")\ is a function that upload in R all of the layers of a raster image
 
 p224r63_2011   #we can see properties of the image and also the georeferenciation and resolution
