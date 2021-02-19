@@ -1,7 +1,16 @@
 # R code for remote sensing data analysis to monitor ecosystem changes in space and time
 
+# Satellite pics: composed by pixel, each quadrant is a color, every color is a number based on refelctance (how much light is reflected)
+  # 1= light green, 9= very darkgreen.
+# Spectral signaling: when vegetation is dying you can see a shift in the absorprtion. Non-healhty vegeation is not doing photosysnthesis so, it is absorbing less. 
+  # Helahty reflect green and absorb blue and red. Stressed does not reflect much green and does not much blue and red.
+  # If you have helahty plant: very high reflectance in infrared and low in red (used for photosinthesis).-->  This is VI (vegetation index)
+    # DVI= difference = NIR (reflectance in infrared) - R (reflecatiance in red)
+      # If it's healthy 100-0=100; unhealthy= 70 - 30= 40.
+        # NDVI index: lower values in stressed plants.
+
 # install.packages(c("raster", "RStollbox"))
-install.packages(c("raster", "RStoolbox"))         #"raster" manages raster data (with pixels) while the other deals with Remote Sensing tools
+install.packages(c("raster", "RStoolbox"))         #"raster" manages raster data (with pixels, data based on images) while the other deals with Remote Sensing tools
 
 library(raster)
 library(RStoolbox)
