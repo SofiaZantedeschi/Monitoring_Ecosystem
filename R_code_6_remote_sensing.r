@@ -9,13 +9,20 @@
       # If it's healthy 100-0=100; unhealthy= 70 - 30= 40.
         # NDVI index: lower values in stressed plants.
 
+## Satellitle images as matrices of numbers.
+# Vegetation is highly reflecting the infrared, which have larger wave after the red. The healthier the tissue the higher the reflection, with maximum green and infrared. 
+## Red and blue are absorbed becasue of photsynthesis, so once the leavesa re stressed they are all reflected in the same way.
+
+## Indices 
+
+
 # install.packages(c("raster", "RStollbox"))
 install.packages(c("raster", "RStoolbox"))         #"raster" manages raster data (with pixels, data based on images) while the other deals with Remote Sensing tools
 
 library(raster)
 library(RStoolbox)
                  
-setwd("~/lab/")
+setwd("~/Lab/")
 # setwd("C:/lab/")  
 # windows
 # setwd("/Users/name/lab/")
