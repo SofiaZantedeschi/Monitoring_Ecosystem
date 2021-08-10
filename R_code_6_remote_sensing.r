@@ -10,7 +10,7 @@
         # NDVI index: lower values in stressed plants.
 
 ## Satellitle images as matrices of numbers.
-# Vegetation is highly reflecting the infrared, which have larger wave after the red. The healthier the tissue the higher the reflection, with maximum green and infrared. 
+## Healthy Vegetation: is highly reflecting the infrared, which have larger wave after the red. The healthier the tissue the higher the reflection, with maximum green and infrared. 
 ## Red and blue are absorbed becasue of photsynthesis, so once the leavesa re stressed they are all reflected in the same way.
 
 ## Indices 
@@ -29,7 +29,7 @@ setwd("~/Lab/")
 
 p224r63_2011 <- brick("p224r63_2011_masked.grd")     #\brick("object to upload in work. dir.")\ is a function that upload in R all of the layers of a raster image
 
-p224r63_2011   #we can see properties of the image and also the georeferenciation and resolution
+p224r63_2011   #we can see properties of the image and also the georeferenciation and resolution (class: rasterbrick)
 plot(p224r63_2011)        #default legend is from white to green 
 
 #These are the bands inside the image. we can check the bandwiths here:https://www.usgs.gov/faqs/what-are-band-designations-landsat-satellites?qt-news_science_products=0#qt-news_science_products
@@ -38,7 +38,7 @@ plot(p224r63_2011)        #default legend is from white to green
 # B2: green
 # B3: red
 # B4: NIR
-# B5: \\
+# B5: middle IR
 # B6: thermal IR
 # B7: middle IR
                  
@@ -46,23 +46,26 @@ plot(p224r63_2011)        #default legend is from white to green
 cl <- colorRampPalette(c('black','grey','light grey'))(100) # 
 plot(p224r63_2011, col=cl)
 
-
-
 # what if we just want to plot the first 4 images? and also plotting them in a single picture with 2x2? using \par\
 par(mfrow=c(2,2))      #when use this command nothing happens but R is ready to build our table with images
 
 # now we start creating the images:
 clb <- colorRampPalette(c('dark blue','blue','light blue'))(100) # 
 plot(p224r63_2011$B1_sre, col=clb)      #the $ is selecting the element/bandwith that we want and then we select the clb colours that we created
+# the higher the refectance in the blue band, the higher is the brightness of the colour.
 
+# doing the same with green
 clg <- colorRampPalette(c('dark green','green','light green'))(100) # 
 plot(p224r63_2011$B2_sre, col=clg)
 
+# red
 clr <- colorRampPalette(c('dark red','red','pink'))(100) # 
 plot(p224r63_2011$B3_sre, col=clr)
 
+# orange
 cln <- colorRampPalette(c('red','orange','yellow'))(100) # 
 plot(p224r63_2011$B4_sre, col=cln)
+
 
 dev.off()       #in order to close the \par\ command
                  
