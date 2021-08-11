@@ -1,0 +1,44 @@
+## APLS ALBEDO 20 YEARS DIFFERENCE
+# Data from: https://land.copernicus.vgt.vito.be/PDF/portal/Application.html
+
+
+# Installing packages required
+install.packages(c("raster", "RStoolbox", "ncdf4")
+
+# Setting the working directory (wd)
+setwd("~/Lab/")
+
+# Recalling the packages needed
+library(ncdf4)
+library(raster)
+
+# Importing images
+al_26_07_99 <- raster ('c_gls_ALBH_199908130000_GLOBE_VGT_V1.4.1.nc')
+
+# Cropping Brenta region
+ext <- c(10.6986, 11.1010, 46.0134, 46.4322) # Dolomiti di Brenta
+ext <- c(10.7171, 12.0025, 45.4589, 46.9036) # Val d'Adige
+al_sum_99 <- crop(al_26_07_99, ext)
+
+# Plot July 99
+plot (al_sum_99)
+
+
+## PLOTTING SUMMER AND WINTER OF 1999 AND 2019
+
+# Plotting August 1998 
+
+# Plotting August 2019
+
+# Plotting Janurayr 1998
+
+# Plotting January 2019
+
+
+## PLOTTING DIFFERENCES SUM (99 - 19) WIN (99 - 19)
+
+# Plotting difference summers
+
+# Plotting difference winter
+
+
