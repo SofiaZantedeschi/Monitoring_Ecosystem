@@ -1,0 +1,13 @@
+# Setting the working directory (wd)
+setwd("~/Lab/")
+
+# Recalling the packages needed
+library(ncdf4)
+library(raster)
+
+# Importing 01.08.18
+Fire_aug <- raster ("c_gls_BA300_201808100000_GLOBE_PROBAV_V1.0.1.nc")
+
+# Cropping Portugalext <- (-10, -6, 36, 42) 
+ext <- c(-10, -6, 36, 42) 
+Fire_aug_P <- crop (Fire_aug, ext)
