@@ -35,12 +35,23 @@ ext <- c(10.8215, 13.9526, 45.8324, 47.8319)
 al_sum_99 <- crop(al_26_07_99, ext)
 al_sum_19 <- crop (al_26_07_19, ext)
 
+# Cropping NW Italy
+ext <- c(5, 10, 44, 47)
+al_sum_99 <- crop(al_26_07_99, ext)
+al_sum_19 <- crop (al_26_07_19, ext)
+
 # Cropping Iceland
 ext <- c(-25, -13, 63, 67)
 al_sum_99 <- crop(al_26_07_99, ext)
 al_sum_19 <- crop (al_26_07_19, ext)
 
-pdf ("albedo.pdf")
+# All Alps
+ext <- c(5, 15, 48, 43)
+al_sum_99 <- crop(al_26_07_99, ext)
+al_sum_19 <- crop (al_26_07_19, ext)
+
+
+pdf ("albedo_Alps.pdf")
 
 cldif <- colorRampPalette(c('red','white','green'))(100)
 clal <- colorRampPalette (c('dark green', 'light green', 'white')) (100)
@@ -81,6 +92,27 @@ plot (NDVI_sum_19, col = clal)
 plot (dif.ndvi, col = cldif)
 
 dev.off()
+
+
+
+## WINTER
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## PLOTTING SUMMER AND WINTER OF 1999 AND 2019
 
