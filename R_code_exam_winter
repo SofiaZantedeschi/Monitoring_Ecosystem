@@ -1,0 +1,47 @@
+setwd("~/Lab/")
+
+# Recalling the packages needed
+library(ncdf4)
+library(raster)
+
+# Importing data
+# 99-20
+al_nov_99 <- raster ('c_gls_ALDH_199911030000_GLOBE_VGT_V1.4.1.nc')
+al_dec_99 <- raster ('c_gls_ALDH_199912030000_GLOBE_VGT_V1.4.1.nc')
+al_jan_20 <- raster ('c_gls_ALDH_200001030000_GLOBE_VGT_V1.4.1.nc')
+al_feb_20 <- raster ('c_gls_ALDH_200002030000_GLOBE_VGT_V1.4.1'.nc)
+al_mar_20 <- raster (.nc)
+
+# 04-05
+al_nov_04 <- raster ('nc')
+al_dec_04 <- raster ('nc')
+al_jan_05 <- raster ('nc')
+al_feb_05 <- raster (''.nc)
+al_mar_05 <- raster (''.nc)
+
+# 09-10
+
+# 14-15
+
+# 18-19
+
+# Cropping Lessinia and Baldo
+ext <- c(10.7, 11.8, 45.4, 46.4)
+nov_99 <- crop(al_nov_99, ext)
+dec_99 <- crop (al_dec_99, ext)
+jan_20 <- crop (al_jan_20,ext)
+
+cldif <- colorRampPalette(c('red','white','green'))(100)
+clal <- colorRampPalette (c('dark green', 'light green', 'white')) (100)
+
+par(mfrow=c(1,3))
+
+# Plot Nov 99
+plot (nov_99, col = clal)
+
+# Plot Dec 19
+plot (dec_99, col = clal)
+
+# Plot Jan 20
+plot (jan_20, col=clal)
+
