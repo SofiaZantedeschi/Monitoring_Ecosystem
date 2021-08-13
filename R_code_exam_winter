@@ -13,9 +13,9 @@ al_feb_20 <- raster ('c_gls_ALDH_200002030000_GLOBE_VGT_V1.4.1'.nc)
 al_mar_20 <- raster (.nc)
 
 # 04-05
-al_nov_04 <- raster ('nc')
-al_dec_04 <- raster ('nc')
-al_jan_05 <- raster ('nc')
+al_nov_04 <- raster ('c_gls_ALDH_200411030000_GLOBE_VGT_V1.4.1.nc')
+al_dec_04 <- raster ('c_gls_ALDH_200412030000_GLOBE_VGT_V1.4.1.nc')
+al_jan_05 <- raster ('c_gls_ALDH_200501030000_GLOBE_VGT_V1.4.1.nc')
 al_feb_05 <- raster (''.nc)
 al_mar_05 <- raster (''.nc)
 
