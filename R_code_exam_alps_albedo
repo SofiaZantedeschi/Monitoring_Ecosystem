@@ -19,6 +19,8 @@ al_26_07_19 <- raster ('c_gls_ALBH_201908130000_GLOBE_PROBAV_V1.5.1.nc')
 
 # Cropping Brenta region
 ext <- c(10.6986, 11.1010, 46.0134, 46.4322) # Dolomiti di Brenta
+al_sum_99 <- crop(al_26_07_99, ext)
+al_sum_19 <- crop (al_26_07_19, ext)
 
 # Cropping Val d'Agide
 ext <- c(10.7171, 12.0025, 45.4589, 46.9036) # Val d'Adige
@@ -50,6 +52,8 @@ ext <- c(5, 15, 48, 43)
 al_sum_99 <- crop(al_26_07_99, ext)
 al_sum_19 <- crop (al_26_07_19, ext)
 
+# Greenland
+ext <- c(-76,-6.6 ,58 ,86 )
 
 pdf ("albedo_Alps.pdf")
 
