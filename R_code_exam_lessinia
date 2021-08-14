@@ -9,21 +9,36 @@ library(raster)
 al_nov_99 <- raster ('c_gls_ALDH_199911030000_GLOBE_VGT_V1.4.1.nc')
 al_dec_99 <- raster ('c_gls_ALDH_199912030000_GLOBE_VGT_V1.4.1.nc')
 al_jan_20 <- raster ('c_gls_ALDH_200001030000_GLOBE_VGT_V1.4.1.nc')
-al_feb_20 <- raster ('c_gls_ALDH_200002030000_GLOBE_VGT_V1.4.1'.nc)
-al_mar_20 <- raster (.nc)
+al_feb_20 <- raster ('c_gls_ALDH_200002030000_GLOBE_VGT_V1.4.1.nc')
+al_mar_20 <- raster ('c_gls_ALDH_200003030000_GLOBE_VGT_V1.4.1.nc')
 
 # 04-05
 al_nov_04 <- raster ('c_gls_ALDH_200411030000_GLOBE_VGT_V1.4.1.nc')
 al_dec_04 <- raster ('c_gls_ALDH_200412030000_GLOBE_VGT_V1.4.1.nc')
 al_jan_05 <- raster ('c_gls_ALDH_200501030000_GLOBE_VGT_V1.4.1.nc')
-al_feb_05 <- raster (''.nc)
-al_mar_05 <- raster (''.nc)
+al_feb_05 <- raster ('c_gls_ALDH_200502030000_GLOBE_VGT_V1.4.1.nc')
+al_mar_05 <- raster ('c_gls_ALDH_200503030000_GLOBE_VGT_V1.4.1.nc')
 
 # 09-10
+al_nov_09 <- raster ('.nc')
+al_dec_09 <- raster ('.nc')
+al_jan_10 <- raster ('.nc')
+al_feb_10 <- raster ('.nc')
+al_mar_10 <- raster ('.nc')
 
 # 14-15
+al_nov_14 <- raster ('.nc')
+al_dec_14 <- raster ('.nc')
+al_jan_15 <- raster ('.nc')
+al_feb_15 <- raster ('.nc')
+al_mar_15 <- raster ('.nc')
 
 # 18-19
+al_nov_18 <- raster ('.nc')
+al_dec_18 <- raster ('.nc')
+al_jan_19 <- raster ('.nc')
+al_feb_19 <- raster ('.nc')
+al_mar_19 <- raster ('.nc')
 
 # Cropping Lessinia and Baldo
 ext <- c(10.7, 11.8, 45.4, 46.4)
