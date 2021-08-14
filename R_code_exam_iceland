@@ -1,0 +1,63 @@
+## ICELAND 20 YEARS DIFFERENCE
+# Data from: https://land.copernicus.vgt.vito.be/PDF/portal/Application.html
+
+# Installing packages required
+install.packages(c("raster", "RStoolbox", "ncdf4")
+
+# Setting the working directory (wd)
+setwd("~/Lab/")
+
+# Recalling the packages needed
+library(ncdf4)
+library(raster)
+
+# Importing images
+al_26_07_99 <- raster ('c_gls_ALBH_199908130000_GLOBE_VGT_V1.4.1.nc')
+al_26_07_19 <- raster ('c_gls_ALBH_201908130000_GLOBE_PROBAV_V1.5.1.nc')
+al_25_01_99 <- raster ('c_gls_ALDH_199901130000_GLOBE_VGT_V1.4.1.nc')
+al_25_01_19 <- raster ('c_gls_ALDH_201901130000_GLOBE_PROBAV_V1.5.1.nc')
+
+# Cropping Iceland
+ext <- c(-25, -13, 63, 67)
+al_sum_99 <- crop (al_26_07_99, ext)
+al_sum_19 <- crop (al_26_07_19, ext)
+al_win_99 <- crop (al_25_01_99, ext)
+al_win_19 <- crop (al_25_01_19, ext)
+
+# ALBEDO CHANGES SUMMER
+cldif <- colorRampPalette(c('red','white','green'))(100)
+clal <- colorRampPalette (c('red', 'orange', 'yellow')) (100)
+
+par(mfrow=c(1,3))
+
+# Plot July 99
+plot (al_sum_99, col = clal, main="Albedo July 1999")
+
+# Plot July 19
+plot (al_sum_19, col = clal, main="Albedo July 2019")
+
+# Plotting difference
+dif <-  al_sum_19 - al_sum_99
+plot (dif, col = cldif, main= "Albedo difference 2019 - 1999)
+
+
+# ALBEDO CHANGES WINTER
+par(mfrow=c(1,3))
+
+# Plot Jan 99
+plot (al_win_99, col = clal)
+
+# Plot Jan 19
+plot (al_sum_19, col = clal)
+
+# Plotting difference
+dif <-  al_win_19 - al_win_99
+plot (dif, col = cldif)
+
+
+
+
+
+
+
+
