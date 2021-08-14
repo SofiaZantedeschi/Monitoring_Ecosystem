@@ -5,12 +5,12 @@ library(ncdf4)
 library(raster)
 
 # Importing data
-# 99-20
+# 99-00
 al_nov_99 <- raster ('c_gls_ALDH_199911030000_GLOBE_VGT_V1.4.1.nc')
 al_dec_99 <- raster ('c_gls_ALDH_199912030000_GLOBE_VGT_V1.4.1.nc')
-al_jan_20 <- raster ('c_gls_ALDH_200001030000_GLOBE_VGT_V1.4.1.nc')
-al_feb_20 <- raster ('c_gls_ALDH_200002030000_GLOBE_VGT_V1.4.1.nc')
-al_mar_20 <- raster ('c_gls_ALDH_200003030000_GLOBE_VGT_V1.4.1.nc')
+al_jan_00 <- raster ('c_gls_ALDH_200001030000_GLOBE_VGT_V1.4.1.nc')
+al_feb_00 <- raster ('c_gls_ALDH_200002030000_GLOBE_VGT_V1.4.1.nc')
+al_mar_00 <- raster ('c_gls_ALDH_200003030000_GLOBE_VGT_V1.4.1.nc')
 
 # 04-05
 al_nov_04 <- raster ('c_gls_ALDH_200411030000_GLOBE_VGT_V1.4.1.nc')
@@ -20,43 +20,113 @@ al_feb_05 <- raster ('c_gls_ALDH_200502030000_GLOBE_VGT_V1.4.1.nc')
 al_mar_05 <- raster ('c_gls_ALDH_200503030000_GLOBE_VGT_V1.4.1.nc')
 
 # 09-10
-al_nov_09 <- raster ('.nc')
-al_dec_09 <- raster ('.nc')
-al_jan_10 <- raster ('.nc')
-al_feb_10 <- raster ('.nc')
-al_mar_10 <- raster ('.nc')
+al_nov_09 <- raster ('c_gls_ALDH_200911030000_GLOBE_VGT_V1.4.1.nc')
+al_dec_09 <- raster ('c_gls_ALDH_200912030000_GLOBE_VGT_V1.4.1.nc')
+al_jan_10 <- raster ('c_gls_ALDH_201001030000_GLOBE_VGT_V1.4.1.nc')
+al_feb_10 <- raster ('c_gls_ALDH_201002030000_GLOBE_VGT_V1.4.1.nc')
+al_mar_10 <- raster ('c_gls_ALDH_201003030000_GLOBE_VGT_V1.4.1.nc')
 
 # 14-15
-al_nov_14 <- raster ('.nc')
-al_dec_14 <- raster ('.nc')
-al_jan_15 <- raster ('.nc')
-al_feb_15 <- raster ('.nc')
-al_mar_15 <- raster ('.nc')
+al_nov_14 <- raster ('c_gls_ALDH_201411030000_GLOBE_PROBAV_V1.5.1.nc')
+al_dec_14 <- raster ('c_gls_ALDH_201412030000_GLOBE_PROBAV_V1.5.1.nc')
+al_jan_15 <- raster ('c_gls_ALDH_201501030000_GLOBE_PROBAV_V1.5.1.nc')
+al_feb_15 <- raster ('c_gls_ALDH_201502030000_GLOBE_PROBAV_V1.5.1.nc')
+al_mar_15 <- raster ('c_gls_ALDH_201503030000_GLOBE_PROBAV_V1.5.1.nc')
 
-# 18-19
-al_nov_18 <- raster ('.nc')
-al_dec_18 <- raster ('.nc')
-al_jan_19 <- raster ('.nc')
-al_feb_19 <- raster ('.nc')
-al_mar_19 <- raster ('.nc')
+# 19-20
+al_nov_19 <- raster ('c_gls_ALDH_201911030000_GLOBE_PROBAV_V1.5.1.nc')
+al_dec_19 <- raster ('c_gls_ALDH_201912030000_GLOBE_PROBAV_V1.5.1.nc')
+al_jan_20 <- raster ('c_gls_ALDH_202001030000_GLOBE_PROBAV_V1.5.1.nc')
+al_feb_20 <- raster ('c_gls_ALDH_202002030000_GLOBE_PROBAV_V1.5.1.nc')
+al_mar_20 <- raster ('c_gls_ALDH_202003030000_GLOBE_PROBAV_V1.5.1.nc')
 
 # Cropping Lessinia and Baldo
 ext <- c(10.7, 11.8, 45.4, 46.4)
-nov_99 <- crop(al_nov_99, ext)
+
+nov_99 <- crop (al_nov_99, ext)
 dec_99 <- crop (al_dec_99, ext)
+jan_00 <- crop (al_jan_20, ext)
+feb_00 <- crop (al_feb_00, ext)
+mar_00 <- crop (al_mar_00, ext)
+
+nov_04 <- crop (al_nov_04, ext)
+dec_04 <- crop (al_dec_04, ext)
+jan_05 <- crop (al_jan_05, ext)
+feb_05 <- crop (al_feb_05, ext)
+mar_05 <- crop (al_mar_05, ext)
+
+nov_14 <- crop (al_nov_14, ext)
+dec_14 <- crop (al_dec_14, ext)
+jan_15 <- crop (al_jan_15, ext)
+feb_15 <- crop (al_feb_15, ext)
+mar_15 <- crop (al_mar_15, ext)
+
+nov_19 <- crop(al_nov_99, ext)
+dec_19 <- crop (al_dec_99, ext)
 jan_20 <- crop (al_jan_20,ext)
+feb_20 <- crop (al_feb_00, ext)
+mar_20 <- crop (al_mar_00, ext)
+
+# Plotting 99-20
+pdf ("Al_lessinia_99_00.pdf")
 
 cldif <- colorRampPalette(c('red','white','green'))(100)
 clal <- colorRampPalette (c('dark green', 'light green', 'white')) (100)
 
-par(mfrow=c(1,3))
+par(mfrow=c(1,5))
 
-# Plot Nov 99
-plot (nov_99, col = clal)
+plot (nov_99, col = clal) # Plot Nov 19
+plot (dec_99, col = clal) # Plot Dec 19
+plot (jan_20, col=clal) # Plot Jan 20
+plot (feb_20, col=clal) # Plot Feb 20
+plot (mar_20, col=clal) # Plot Mar 20
 
-# Plot Dec 19
-plot (dec_99, col = clal)
+dev.off()
 
-# Plot Jan 20
-plot (jan_20, col=clal)
+# Plotting 04-05
+pdf ("Al_lessinia_04_05.pdf")
+par(mfrow=c(1,5))
 
+plot (nov_04, col = clal) # Plot Nov 04
+plot (dec_04, col = clal) # Plot Dec 04
+plot (jan_05, col=clal) # Plot Jan 05
+plot (feb_05, col=clal) # Plot Feb 05
+plot (mar_05, col=clal) # Plot Mar 05
+
+dev.off()
+
+# Plotting 09-10
+pdf ("Al_lessinia_09_10.pdf")
+par(mfrow=c(1,5))
+
+plot (nov_09, col = clal) # Plot Nov 09
+plot (dec_09, col = clal) # Plot Dec 09
+plot (jan_10, col=clal) # Plot Jan 10
+plot (feb_10, col=clal) # Plot Feb 10
+plot (mar_10, col=clal) # Plot Mar 10
+
+dev.off()
+
+# Plotting 14-15
+pdf ("Al_lessinia_14_15.pdf")
+par(mfrow=c(1,5))
+
+plot (nov_14, col = clal) # Plot Nov 14
+plot (dec_14, col = clal) # Plot Dec 14
+plot (jan_15, col=clal) # Plot Jan 15
+plot (feb_15, col=clal) # Plot Feb 15
+plot (mar_15, col=clal) # Plot Mar 15
+
+dev.off()
+
+# Plotting 19-20
+pdf ("Al_lessinia_19_20.pdf")
+par(mfrow=c(1,5))
+
+plot (nov_19, col = clal) # Plot Nov 19
+plot (dec_19, col = clal) # Plot Dec 19
+plot (jan_20, col=clal) # Plot Jan 20
+plot (feb_20, col=clal) # Plot Feb 20
+plot (mar_20, col=clal) # Plot Mar 20
+
+dev.off()
