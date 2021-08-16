@@ -14,7 +14,7 @@ library(RColorBrewer)
 
 # Importing images
 al_13_08_99 <- raster ('c_gls_ALBH_199908130000_GLOBE_VGT_V1.4.1.nc')
-al_13_08_09 <- raster ('')
+al_13_08_09 <- raster ('c_gls_ALDH_200908130000_GLOBE_VGT_V1.4.1.nc')
 al_13_08_19 <- raster ('c_gls_ALBH_201908130000_GLOBE_PROBAV_V1.5.1.nc')
 
 # Cropping Iceland
@@ -28,7 +28,9 @@ al_sum_19 <- crop (al_13_08_19, ext)
 cldif <- colorRampPalette(c('red','white','blue'))(100)
 clal <- colorRampPalette (c('white', 'light green', 'dark green')) (100)
 
-# Plotting the images
+# Plotting albedo in summer every ten years (1999, 2009, 2019)
+pdf ("Albedo_summer_iceland.pdf") #saving the image as PDF
+
 par(mfrow=c(1,3)) # 1 row, 3 columns
 
 # Plot August 99
@@ -40,20 +42,29 @@ plot (al_sum_09, col=clal, main="Albedo July 2009")
 # Plot July 19
 plot (al_sum_19, col = clal, main="Albedo July 2019")
 
-# Plotting difference
+dev.off() # closing the pdf function
+
+# Plotting differences
+pdf ("Albedo_differences_iceland.pdf") #saving the image as PDF
+
+par(mfrow=c(1,3)) # 1 row, 3 columns
+
 # between 2009-1999
-dif 09_99 <- al_sum_09 - al_sum_99
+dif_09_99 <- al_sum_09 - al_sum_99
 plot (dif_09_99, col = cldif, main= "Albedo difference 2009 - 1999")
 
 # between 2019-2009
-dif 19_09 <- al_sum_19 - al_sum_09
+dif_19_09 <- al_sum_19 - al_sum_09
 plot (dif_19_09, col = cldif, main= "Albedo difference 2019 - 2009")
 
 # between 2019-1999
 dif_19_99 <- al_sum_19 - al_sum_99
 plot (dif_19_99, col = cldif, main= "Albedo difference 2019 - 1999")
 
+dev.off()
 
+# Elisa's thingy
 
+ggR(al_sum_19, geom_raster = TRUE) + ggtitle("albedo 2019") + theme_light() + theme(plot.title.position ='plot', plot.title = element_text(hjust = 0.5, size = rel(1)))
 
 
