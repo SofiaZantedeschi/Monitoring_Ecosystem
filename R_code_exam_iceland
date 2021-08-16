@@ -47,8 +47,9 @@ plot (al_sum_99, col = clal, main="Albedo August 1999", xlim=c(-30, -10))
 # Plot August 09
 plot (al_sum_09, col=clal, main="Albedo August 2009",xlim=c(-30, -10))
 
-# Plot July 19
-plot (al_sum_19, col = clal, main="Albedo August 2019", xlim=c(-30, -10))
+# Plot August 19
+plot (al_sum_19, col = clal, main="Albedo August 2019", xlim=c(-30, -10))) 
+
 
 dev.off() # closing the png function
 
