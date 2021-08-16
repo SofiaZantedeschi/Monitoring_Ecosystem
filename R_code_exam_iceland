@@ -17,16 +17,24 @@ al_13_08_99 <- raster ('c_gls_ALBH_199908130000_GLOBE_VGT_V1.4.1.nc')
 al_13_08_09 <- raster ('c_gls_ALDH_200908130000_GLOBE_VGT_V1.4.1.nc')
 al_13_08_19 <- raster ('c_gls_ALBH_201908130000_GLOBE_PROBAV_V1.5.1.nc')
 
+NDVI_11_08_99 <- raster ('c_gls_NDVI_199908110000_GLOBE_VGT_V3.0.1.nc')
+NDVI_11_08_09 <- raster ('c_gls_NDVI_200908110000_GLOBE_VGT_V3.0.1.nc')
+NDVI_11_08_19 <- raster ('c_gls_NDVI_201908110000_GLOBE_PROBAV_V3.0.1.nc')
+
 # Cropping Iceland
 ext <- c(-25, -13, 63, 67)
 al_sum_99 <- crop (al_13_08_99, ext)
 al_sum_09 <- crop (al_13_08_09, ext)
 al_sum_19 <- crop (al_13_08_19, ext)
 
+NDVI_sum_99 <- crop (NDVI_11_08_99, ext)
+NDVI_sum_09 <- crop (NDVI_11_08_09, ext)
+NDVI_sum_19 <- crop (NDVI_11_08_19, ext)
+
 # ALBEDO CHANGES SUMMER
 # Setting the colours
 cldif <- colorRampPalette(c('red','white','blue'))(100)
-clal <- colorRampPalette (c('white', 'light green', 'dark green')) (100)
+clal <- colorRampPalette (c('white', 'pink', 'purple')) (100)
 
 # Plotting albedo in summer every ten years (1999, 2009, 2019)
 pdf ("Albedo_summer_iceland.pdf") #saving the image as PDF
@@ -62,6 +70,48 @@ dif_19_99 <- al_sum_19 - al_sum_99
 plot (dif_19_99, col = cldif, main= "Albedo difference 2019 - 1999")
 
 dev.off()
+
+
+## NDVI CHANGES IN SUMMER
+# Setting the colours
+cldif <- colorRampPalette(c('red','white','blue'))(100)
+clndvi <- colorRampPalette (c('white', 'light green', 'dark green')) (100)
+
+# Plotting NDVI in summer every ten years (1999, 2009, 2019)
+pdf ("NDVI_summer_iceland.pdf") #saving the image as PDF
+
+par(mfrow=c(1,3)) # 1 row, 3 columns
+
+# Plot August 99
+plot (NDVI_sum_99, col = clndvi, main="NDVI July 1999")
+
+# Plot August 09
+plot (NDVI_sum_09, col=clndvi, main="NDVI July 2009")
+
+# Plot July 19
+plot (NDVI_sum_19, col = clndvi, main="NDVI July 2019")
+
+dev.off() # closing the pdf function
+
+# Plotting differences
+pdf ("NDVI_differences_iceland.pdf") #saving the image as PDF
+
+par(mfrow=c(1,3)) # 1 row, 3 columns
+
+# between 2009-1999
+NDVI_dif_09_99 <- NDVI_sum_09 - NDVI_sum_99
+plot (NDVI_dif_09_99, col = cldif, main= "NDVI difference 2009 - 1999")
+
+# between 2019-2009
+NDVI_dif_19_09 <- NDVI_sum_19 - NDVI_sum_09
+plot (NDVI_dif_19_09, col = cldif, main= "NDVI difference 2019 - 2009")
+
+# between 2019-1999
+NDVI_dif_19_99 <- NDVI_sum_19 - NDVI_sum_99
+plot (NDVI_dif_19_99, col = cldif, main= "NDVI difference 2019 - 1999")
+
+dev.off()
+
 
 # Elisa's thingy
 
