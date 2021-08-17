@@ -22,7 +22,7 @@ NDVI_11_08_09 <- raster ('c_gls_NDVI_200908110000_GLOBE_VGT_V3.0.1.nc')
 NDVI_11_08_19 <- raster ('c_gls_NDVI_201908110000_GLOBE_PROBAV_V3.0.1.nc')
 
 # Cropping Iceland
-ext <- c(-25,-13, 63, 67)
+ext <- extent (-25,-13, 63, 67)
 al_sum_99 <- crop (al_13_08_99, ext)
 al_sum_09 <- crop (al_13_08_09, ext)
 al_sum_19 <- crop (al_13_08_19, ext)
@@ -37,18 +37,18 @@ cldif <- colorRampPalette(c('red','cornsilk2','blue'))(100)
 clal <- colorRampPalette (c('white', 'pink', 'purple')) (100)
 
 # Plotting albedo in summer every ten years (1999, 2009, 2019)
-pdf ("Albedo_summer_iceland.pdf") #saving the image as PDF
+pdf ("Albedo_summer_iceland_.pdf") #saving the image as PDF
 
-par(mfrow=c(3,1)) # 3 rows, 1 column
+par(mfrow=c(1,3)) # 1 rows, 3 column
 
 # Plot August 99
-plot (al_sum_99, col = clal, main="Albedo August 1999", xlim=c(-30, -10))
+plot (al_sum_99, col = clal, main="Albedo August 1999")
 
 # Plot August 09
-plot (al_sum_09, col=clal, main="Albedo August 2009",xlim=c(-30, -10))
+plot (al_sum_09, col=clal, main="Albedo August 2009")
 
 # Plot August 19
-plot (al_sum_19, col = clal, main="Albedo August 2019", xlim=c(-30, -10))) 
+plot (al_sum_19, col = clal, main="Albedo August 2019")
 
 
 dev.off() # closing the png function
@@ -56,19 +56,19 @@ dev.off() # closing the png function
 # Plotting differences
 pdf ("Albedo_differences_iceland.pdf") #saving the image as PDF
 
-par(mfrow=c(3,1)) # 3 rows, 1 column
+par(mfrow=c(1,3)) # 1 rows, 3 column
 
 # between 2009-1999
 dif_09_99 <- al_sum_09 - al_sum_99
-plot (dif_09_99, col = cldif, main= "Albedo difference 2009 - 1999", xlim=c(-30, -10))
+plot (dif_09_99, col = cldif, main= "Albedo difference 2009 - 1999", xlim=c(-30, -10), ylim=c(60, 70))
 
 # between 2019-2009
 dif_19_09 <- al_sum_19 - al_sum_09
-plot (dif_19_09, col = cldif, main= "Albedo difference 2019 - 2009", xlim=c(-30, -10))
+plot (dif_19_09, col = cldif, main= "Albedo difference 2019 - 2009", xlim=c(-30, -10), ylim=c(60, 70))
 
 # between 2019-1999
 dif_19_99 <- al_sum_19 - al_sum_99
-plot (dif_19_99, col = cldif, main= "Albedo difference 2019 - 1999", xlim=c(-30, -10))
+plot (dif_19_99, col = cldif, main= "Albedo difference 2019 - 1999", xlim=c(-30, -10), ylim=c(60, 70))
 
 dev.off()
 
@@ -81,35 +81,35 @@ clndvi <- colorRampPalette (c('white', 'light green', 'dark green')) (100)
 # Plotting NDVI in summer every ten years (1999, 2009, 2019)
 pdf ("NDVI_summer_iceland.pdf") #saving the image as PDF
 
-par(mfrow=c(3,1)) # 3 rows, 1 column
+par(mfrow=c(1,3)) # 1 rows, 3 column
 
 # Plot August 99
-plot (NDVI_sum_99, col = clndvi, main="NDVI August 1999", xlim=c(-30, -10))
+plot (NDVI_sum_99, col = clndvi, main="NDVI August 1999", xlim=c(-30, -10), ylim=c(60, 70))
 
 # Plot August 09
-plot (NDVI_sum_09, col=clndvi, main="NDVI August 2009", xlim=c(-30, -10))
+plot (NDVI_sum_09, col=clndvi, main="NDVI August 2009", xlim=c(-30, -10), ylim=c(60, 70))
 
 # Plot July 19
-plot (NDVI_sum_19, col = clndvi, main="NDVI August 2019", xlim=c(-30, -10))
+plot (NDVI_sum_19, col = clndvi, main="NDVI August 2019", xlim=c(-30, -10), ylim=c(60, 70))
 
 dev.off() # closing the pdf function
 
 # Plotting differences
 pdf ("NDVI_differences_iceland.pdf") #saving the image as PDF
 
-par(mfrow=c(3,1)) # 3 rows, 1 column
+par(mfrow=c(1,3)) # 1 rows, 3 column
 
 # between 2009-1999
 NDVI_dif_09_99 <- NDVI_sum_09 - NDVI_sum_99
-plot (NDVI_dif_09_99, col = cldif, main= "NDVI difference 2009 - 1999", xlim=c(-30, -10))
+plot (NDVI_dif_09_99, col = cldif, main= "NDVI difference 2009 - 1999", xlim=c(-30, -10), ylim=c(60, 70))
 
 # between 2019-2009
 NDVI_dif_19_09 <- NDVI_sum_19 - NDVI_sum_09
-plot (NDVI_dif_19_09, col = cldif, main= "NDVI difference 2019 - 2009", xlim=c(-30, -10))
+plot (NDVI_dif_19_09, col = cldif, main= "NDVI difference 2019 - 2009", xlim=c(-30, -10), ylim=c(60, 70))
 
 # between 2019-1999
 NDVI_dif_19_99 <- NDVI_sum_19 - NDVI_sum_99
-plot (NDVI_dif_19_99, col = cldif, main= "NDVI difference 2019 - 1999", xlim=c(-30, -10))
+plot (NDVI_dif_19_99, col = cldif, main= "NDVI difference 2019 - 1999", xlim=c(-30, -10), ylim=c(60, 70))
 
 dev.off()
 
