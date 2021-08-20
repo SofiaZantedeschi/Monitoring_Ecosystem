@@ -41,13 +41,12 @@ LAI_sum_19 <- crop (LAI_10_08_19, ext)
 
 # Setting the colours
 cldif <- colorRampPalette(c('red','cornsilk2','blue'))(100)
-clal <- colorRampPalette (c('white', 'pink', 'purple')) (100)
+clal <- colorRampPalette (c('purple', 'pink', 'white')) (100)
 clndvi <- colorRampPalette (c('white', 'light green', 'dark green')) (100)
 cllai <- colorRampPalette (c('white', 'light pink', 'purple')) (100)
 
 # ALBEDO CHANGES SUMMER
 # Plotting albedo in summer every ten years (1999, 2009, 2019)
-pdf ("Albedo_summer_iceland_.pdf") #saving the image as PDF
 
 par(mfrow=c(1,3)) # 1 rows, 3 column
 
@@ -60,11 +59,8 @@ plot (al_sum_09, col=clal, main="Albedo August 2009")
 # Plot August 19
 plot (al_sum_19, col = clal, main="Albedo August 2019")
 
-dev.off() # closing the pdf function
-
 
 # Plotting differences
-pdf ("Albedo_differences_iceland.pdf") #saving the image as PDF
 
 par(mfrow=c(1,3)) # 1 rows, 3 column
 
@@ -80,13 +76,10 @@ plot (dif_19_09, col = cldif, main= "Albedo difference 2019 - 2009")
 dif_19_99 <- al_sum_19 - al_sum_99
 plot (dif_19_99, col = cldif, main= "Albedo difference 2019 - 1999")
 
-dev.off()
-
 
 ## NDVI CHANGES IN SUMMER
 
 # Plotting NDVI in summer every ten years (1999, 2009, 2019)
-pdf ("NDVI_summer_iceland.pdf") #saving the image as PDF
 
 par(mfrow=c(1,3)) # 1 rows, 3 column
 
@@ -99,7 +92,6 @@ plot (NDVI_sum_09, col=clndvi, main="NDVI August 2009")
 # Plot August 19
 plot (NDVI_sum_19, col = clndvi, main="NDVI August 2019")
 
-dev.off() # closing the pdf function
 
 # Plotting differences
 par(mfrow=c(1,3)) # 1 rows, 3 column
