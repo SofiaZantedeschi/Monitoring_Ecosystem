@@ -2,31 +2,33 @@
 # Data from: https://land.copernicus.vgt.vito.be/PDF/portal/Application.html
 
 # Installing packages required
-install.packages(c("raster", "RStoolbox", "ncdf4") # 
+install.packages(c("raster", "ncdf4") #raster: to work with spatial data # ncdf4: high-level R interface to data files 
 
-# Setting the working directory (wd)
+# Setting the working directory (wd) in Linux OS
 setwd("~/Lab/")
 
 # Recalling the packages needed
 library(ncdf4)
 library(raster)
-library(RColorBrewer)
 
-# Importing images
+# Importing spatial data
+# Albedo
 al_13_08_99 <- raster ('c_gls_ALBH_199908130000_GLOBE_VGT_V1.4.1.nc')
 al_13_08_09 <- raster ('c_gls_ALDH_200908130000_GLOBE_VGT_V1.4.1.nc')
 al_13_08_19 <- raster ('c_gls_ALBH_201908130000_GLOBE_PROBAV_V1.5.1.nc')
 
+#NDVI
 NDVI_11_08_99 <- raster ('c_gls_NDVI_199908110000_GLOBE_VGT_V3.0.1.nc')
 NDVI_11_08_09 <- raster ('c_gls_NDVI_200908110000_GLOBE_VGT_V3.0.1.nc')
 NDVI_11_08_19 <- raster ('c_gls_NDVI_201908110000_GLOBE_PROBAV_V3.0.1.nc')
 
+#LAI
 LAI_10_08_99 <- raster ('c_gls_LAI_199908100000_GLOBE_VGT_V2.0.2.nc')
 LAI_10_08_09 <- raster ('c_gls_LAI_200908100000_GLOBE_VGT_V2.0.1.nc')
 LAI_10_08_19 <- raster ('c_gls_LAI-RT6_201908100000_GLOBE_PROBAV_V2.0.1.nc')
 
 # Cropping Iceland
-ext <- extent (-25,-13, 63, 67)
+ext <- extent (-25,-13, 63, 67) # Iceland coordinates
 al_sum_99 <- crop (al_13_08_99, ext)
 al_sum_09 <- crop (al_13_08_09, ext)
 al_sum_19 <- crop (al_13_08_19, ext)
@@ -133,7 +135,7 @@ LAI_dif_19_99 <- LAI_sum_19 - LAI_sum_99
 plot (LAI_dif_19_99, col = cldif, main= "LAI difference 2019 - 1999")
 
 
-# Saving plots as pdf singularly
+# Saving plots as pdf singularly for presentation purposes
 # Albedo
 pdf ("Al_sum_99.pdf")
 plot (al_sum_99, col = clal, main="Albedo August 1999")
