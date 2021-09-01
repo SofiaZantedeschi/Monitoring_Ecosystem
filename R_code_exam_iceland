@@ -43,7 +43,7 @@ LAI_sum_19 <- crop (LAI_10_08_19, ext)
 
 # Setting the colours
 cldif <- colorRampPalette(c('red','cornsilk2','blue'))(100)
-clal <- colorRampPalette (c('white','pink','purple')) (100)
+clal <- colorRampPalette (c('pink','purple','blue')) (100)
 clndvi <- colorRampPalette (c('white', 'light green', 'dark green')) (100)
 cllai <- colorRampPalette (c('white', 'light pink', 'purple')) (100)
 
