@@ -64,7 +64,7 @@ plot (al_sum_19, col = clal, main="Albedo August 2019")
 
 # Plotting differences
 
-par(mfrow=c(1,3))
+par(mfrow=c(1,3)) # 1 row, 3 columns
 
 # between 2009-1999
 dif_09_99 <- al_sum_09 - al_sum_99
@@ -83,7 +83,7 @@ plot (dif_19_99, col = cldif, main= "Albedo difference 2019 - 1999")
 
 # Plotting NDVI in summer every ten years (1999, 2009, 2019)
 
-par(mfrow=c(1,3)) # 1 rows, 3 column
+par(mfrow=c(1,3)) # 1 row, 3 columns
 
 # Plot August 99
 plot (NDVI_sum_99, col = clndvi, main="NDVI August 1999")
@@ -96,7 +96,7 @@ plot (NDVI_sum_19, col = clndvi, main="NDVI August 2019")
 
 
 # Plotting differences
-par(mfrow=c(1,3)) # 1 rows, 3 column
+par(mfrow=c(1,3)) # 1 row, 3 columns
 
 # between 2009-1999
 NDVI_dif_09_99 <- NDVI_sum_09 - NDVI_sum_99
@@ -111,7 +111,7 @@ NDVI_dif_19_99 <- NDVI_sum_19 - NDVI_sum_99
 plot (NDVI_dif_19_99, col = cldif, main= "NDVI difference 2019 - 1999")
 
 ## LAI CHANGES IN SUMMER
-par(mfrow=c(1,3)) # 1 rows, 3 column
+par(mfrow=c(1,3)) # 1 row, 3 columns
 
 # Plotting August 99
 plot (LAI_sum_99,col=cllai, main ="LAI August 1999")
@@ -121,7 +121,7 @@ plot (LAI_sum_09,col=cllai, main ="LAI August 2009")
 plot (LAI_sum_19,col=cllai, main ="LAI August 2019")
 
 # Plotting differences
-par(mfrow=c(1,3)) # 1 rows, 3 column
+par(mfrow=c(1,3)) # 1 row, 3 columns
 
 LAI_dif_09_99 <- LAI_sum_09 - LAI_sum_99
 plot (LAI_dif_09_99, col = cldif, main= "LAI difference 2009 - 1999")
